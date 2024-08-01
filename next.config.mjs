@@ -6,6 +6,10 @@ const nextConfig = {
                 protocol: "https",
                 hostname: "c.wallhere.com",
             },
+            {
+                protocol: "https",
+                hostname: "as2.ftcdn.net",
+            },
         ],
     },
 };
