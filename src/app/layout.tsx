@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Background from "./_components/Background";
+import SvgComponent from "./_components/Svg";
+import Image from "next/image";
+import logo from "../../public/images/league_logo.png";
+import logoSm from "../../public/images/league_logo_small.png";
+import Nav from "./_components/Nav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,15 +21,36 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="en" className="overscroll-none">
             <body
-                className={`${inter.className} flex h-dvh w-dvw bg-white p-2`}
+                className={`${inter.className} flex h-dvh w-dvw bg-white overflow-hidden p-1`}
             >
-                <header className="absolute top-auto left-2 md:static w-14 h-14 md:h-full bg-white">
-                    menu
+                <header className="w-20 h-full absolute top-1 left-1 z-50 md:static flex flex-col justify-center md:justify-start items-center">
+                    <div className="md:h-full md:flex flex-col bg-white rounded-full px-2 pt-4 pb-6">
+                        <Image
+                            src={logoSm}
+                            alt={"small logo"}
+                            width={50}
+                            height={50}
+                        />
+                        <Nav />
+                    </div>
                 </header>
-                <main className="h-full flex-1 rounded-[3rem] overflow-hidden shadow-inner">
-                    {children}
+                <main className="relative h-full flex-1 rounded-[4rem] overflow-hidden shadow-inner">
+                    <div className="w-full absolute z-50 top-[-2px] flex justify-center items-center">
+                        <SvgComponent className="fill-white w-2/3 max-w-lg" />
+                        <Image
+                            src={logo}
+                            alt={"logo"}
+                            width={160}
+                            height={160}
+                            className="absolute w-1/5 max-w-40"
+                        />
+                    </div>
+                    <Background />
+                    <div className="w-full h-full absolute z-10 pointer-events-none">
+                        {children}
+                    </div>
                 </main>
                 <footer className="hidden"></footer>
             </body>

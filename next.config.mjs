@@ -4,7 +4,7 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: "https",
-                hostname: "c.wallhere.com",
+                hostname: "www.pixel4k.com",
             },
             {
                 protocol: "https",
